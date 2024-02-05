@@ -1,82 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet Plateforme Web - Contexte et Guide d'Installation</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>Projet de Plateforme Web pour la Communication et le Marketing</h1>
+# Projet de Plateforme Web pour la Communication et le Marketing
 
-    <h2>Contexte du Projet</h2>
-    <p>
-        Notre client, une entreprise en pleine croissance dans le secteur de la communication et du marketing, souhaite centraliser et rationaliser ses opérations en ligne. Pour répondre à ce besoin, nous développons une plateforme web interne intégrant des fonctionnalités avancées pour améliorer la communication, la gestion de l'information et la collaboration au sein de l'équipe.
-    </p>
+## Contexte du Projet
 
-    <!-- ... (Existing content) -->
+Notre client, une entreprise en pleine croissance dans le secteur de la communication et du marketing, souhaite centraliser et rationaliser ses opérations en ligne. Pour répondre à ce besoin, nous développons une plateforme web interne intégrant des fonctionnalités avancées pour améliorer la communication, la gestion de l'information et la collaboration au sein de l'équipe.
 
-    <h2>Guide d'Installation</h2>
+## Fonctionnalités Clés
 
-    <h3>Prérequis</h3>
-    <ul>
-        <li>PHP >= 7.4</li>
-        <li>Composer - Installez-le à partir de <a href="https://getcomposer.org/" target="_blank">https://getcomposer.org/</a></li>
-        <li>Node.js et npm - Installez-les à partir de <a href="https://nodejs.org/" target="_blank">https://nodejs.org/</a></li>
-        <!-- Add any other prerequisites -->
-    </ul>
+### Gestion de Newsletter (Spatie)
 
-    <h3>Installation</h3>
-    <pre><code>
-    # Clonez le dépôt
-    git clone https://github.com/VotreNom/ProjetPlateformeWeb.git
+La plateforme doit permettre à l'entreprise d'envoyer des newsletters régulières à ses clients et partenaires. L'intégration du package Spatie Newsletter est essentielle pour faciliter la création, l'envoi et le suivi des campagnes de newsletters. Les fonctionnalités de gestion des abonnements et des listes de diffusion doivent être intuitives et conviviales.
 
-    # Accédez au répertoire du projet
-    cd ProjetPlateformeWeb
+### Authentification avec Gestion des Rôles (Policies et Guards)
 
-    # Installez les dépendances PHP avec Composer
-    composer install
+La sécurité et la confidentialité des données sont primordiales. Nous avons besoin d'un système d'authentification robuste avec gestion des rôles basée sur les politiques et gardes de Laravel. Trois rôles distincts seront définis : Administrateur, Rédacteur et Membre. Chaque rôle aura des autorisations spécifiques pour accéder et modifier certaines parties de la plateforme.
 
-    # Installez les dépendances JavaScript avec npm
-    npm install
+### Fonctionnalités Forgot Password et Remember Me
 
-    # Configurez le fichier d'environnement
-    cp .env.example .env
-    php artisan key:generate
+Afin d'assurer une expérience utilisateur fluide, la plateforme doit inclure les fonctionnalités "forgot password" pour permettre aux utilisateurs de réinitialiser leur mot de passe, ainsi que la fonction "remember me" pour faciliter la connexion automatique.
 
-    # Migratez la base de données
-    php artisan migrate
+### Media Library (Spatie)
 
-    # Démarrez le serveur de développement
-    php artisan serve
-    </code></pre>
+La gestion de médias est un élément clé de la plateforme. Spatie Media Library sera utilisé pour permettre aux utilisateurs de télécharger, organiser et partager des fichiers multimédias tels que des images, des vidéos et des documents. Chaque média doit être associé à un utilisateur ou à un projet spécifique.
 
-    <p>La plateforme devrait maintenant être accessible à l'adresse <a href="http://localhost:8000" target="_blank">http://localhost:8000</a>.</p>
+### Soft Delete
 
-    <h2>Objectif</h2>
-    <p>
-        En intégrant ces fonctionnalités, la plateforme offrira à notre client une solution complète et personnalisée pour répondre à ses besoins internes en communication, collaboration et gestion d'informations.
-    </p>
-</body>
-</html>
+Afin d'éviter la perte accidentelle de données, la plateforme doit mettre en œuvre la fonctionnalité "soft delete". Cela signifie que les enregistrements ne seront pas supprimés physiquement de la base de données, mais plutôt marqués comme supprimés, offrant ainsi la possibilité de les restaurer si nécessaire.
+
+### Middleware
+
+Des middleware seront mis en place pour gérer les autorisations spécifiques aux rôles. Cela garantira que chaque utilisateur a accès uniquement aux fonctionnalités qui lui sont autorisées en fonction de son rôle.
+
+### Génération PDF
+
+La plateforme doit pouvoir générer des fichiers PDF à partir de données spécifiques. Par exemple, un rapport mensuel agrégeant les performances des campagnes de newsletters ou un récapitulatif des médias téléchargés sur une période donnée.
+
+### Modélisation avec 3 Rôles
+
+La base de données doit être modélisée de manière à prendre en charge les trois rôles définis (Administrateur, Rédacteur, Membre). Chaque rôle aura des tables et des relations spécifiques, assurant ainsi une séparation claire des données et des responsabilités au sein de la plateforme.
+
+## Guide d'Installation
+
+### Prérequis
+
+- PHP >= 7.4
+- Composer - Installez-le à partir de [https://getcomposer.org/](https://getcomposer.org/)
+- Node.js et npm - Installez-les à partir de [https://nodejs.org/](https://nodejs.org/)
+<!-- Ajoutez tout autre prérequis -->
+
+### Installation
+
+```bash
+# Clonez le dépôt
+git clone https://github.com/VotreNom/ProjetPlateformeWeb.git
+
+# Accédez au répertoire du projet
+cd ProjetPlateformeWeb
+
+# Installez les dépendances PHP avec Composer
+composer install
+
+# Installez les dépendances JavaScript avec npm
+npm install
+
+# Configurez le fichier d'environnement
+cp .env.example .env
+php artisan key:generate
+
+# Migratez la base de données
+php artisan migrate
+
+# Démarrez le serveur de développement
+php artisan serve
