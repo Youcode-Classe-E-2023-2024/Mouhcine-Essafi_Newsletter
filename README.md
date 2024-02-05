@@ -1,4 +1,4 @@
-# Projet de Plateforme Web pour la Communication et le Marketing
+# Projet de Plateforme Web pour Gestionnaire de Newsletter
 
 ## Contexte du Projet
 
