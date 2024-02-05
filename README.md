@@ -42,19 +42,17 @@ La base de données doit être modélisée de manière à prendre en charge les 
 
 ### Prérequis
 
-- PHP >= 7.4
+- PHP >= 10
 - Composer - Installez-le à partir de [https://getcomposer.org/](https://getcomposer.org/)
-- Node.js et npm - Installez-les à partir de [https://nodejs.org/](https://nodejs.org/)
-<!-- Ajoutez tout autre prérequis -->
 
 ### Installation
 
 ```bash
 # Clonez le dépôt
-git clone https://github.com/VotreNom/ProjetPlateformeWeb.git
+git clone https://github.com/Youcode-Classe-E-2023-2024/Mouhcine-Essafi_Newsletter.git
 
 # Accédez au répertoire du projet
-cd ProjetPlateformeWeb
+cd Mouhcine-Essafi_Newsletter
 
 # Installez les dépendances PHP avec Composer
 composer install
