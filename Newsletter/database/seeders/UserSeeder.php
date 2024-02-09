@@ -15,27 +15,46 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [
-            ['name' => 'Administrateur'],
-            ['name' => 'Rédacteur'],
-            ['name' => 'Membre']
-        ];
-        foreach ($roles as $role) {
-            Role::create($role);
-        }
-
+        $role = Role::where('name', 'Administrateur')->first();
         $permissions = [
-            ['name' => 'create media'],
-            ['name' => 'delete media'],
-            ['name' => 'create template'],
-            ['name' => 'delete template'],
-            ['name' => 'update template'],
-            ['name' => 'send newsletters']
-        ];
+            // ['name' => 'create media'],
+            // ['name' => 'delete media'],
+            // ['name' => 'create template'],
+            // ['name' => 'delete template'],
+            // ['name' => 'update template'],
+            // ['name' => 'send newsletters']
+            // ['name' => 'generate pdf'],
+            // ['name' => 'view dashboard']
+            ['name' => 'Gérer les utilisateur']
 
-        foreach ($permissions as $permission) {
-            Permission::create($permission);
+        ];
+        
+        foreach ($permissions as $permissionData) {
+            $permission = Permission::firstOrCreate($permissionData);
+            $role->givePermissionTo($permission);
         }
+
+        // $roles = [
+        //     ['name' => 'Administrateur'],
+        //     ['name' => 'Rédacteur'],
+        //     ['name' => 'Membre']
+        // ];
+        // foreach ($roles as $role) {
+        //     Role::create($role);
+        // }
+
+        // $permissions = [
+        //     ['name' => 'create media'],
+        //     ['name' => 'delete media'],
+        //     ['name' => 'create template'],
+        //     ['name' => 'delete template'],
+        //     ['name' => 'update template'],
+        //     ['name' => 'send newsletters']
+        // ];
+
+        // foreach ($permissions as $permission) {
+        //     Permission::create($permission);
+        // }
 
     }
 }
