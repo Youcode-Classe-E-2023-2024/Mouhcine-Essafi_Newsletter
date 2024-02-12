@@ -51,10 +51,11 @@
                         <p class="text-base md:text-lg text-gray-700 mt-3 ">Join 1k+ happy subscribers!</p>
                     </div>
 
-                    <div class="card-mail flex items-center my-10">
-                        <input type="email" class="border-l border-t border-b border-gray-200 rounded-l-md w-full text-base md:text-lg px-3 py-2" placeholder="Enter Your Email">
-                        <button class="bg-orange-500 hover:bg-orange-600 hover:border-orange-600 text-white font-bold capitalize px-3 py-2 text-base md:text-lg rounded-r-md border-t border-r border-b border-orange-500">subscribe</button>
-                    </div>
+                    <form action="{{ route('subscribe') }}" method="POST" class="card-mail flex items-center my-10">
+                        @csrf
+                        <input name="email" type="email" class="border-l border-t border-b border-gray-200 rounded-l-md w-full text-base md:text-lg px-3 py-2" placeholder="Enter Your Email">
+                        <button type="submit" class="bg-orange-500 hover:bg-orange-600 hover:border-orange-600 text-white font-bold capitalize px-3 py-2 text-base md:text-lg rounded-r-md border-t border-r border-b border-orange-500">subscribe</button>
+                    </form>
                 </div>
             </div>
 
