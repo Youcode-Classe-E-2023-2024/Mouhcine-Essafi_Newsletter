@@ -1,5 +1,3 @@
-<!-- resources/views/manage_roles_permissions.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
