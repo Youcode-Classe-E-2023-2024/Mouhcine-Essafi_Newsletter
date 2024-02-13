@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/manage-roles-permissions',  [DashboardController::class, 'getUsersRolesPermissions']);
+
+// // Assigner un rôle à un utilisateur
+Route::post('/assign-role', [DashboardController::class, 'assignRole'])->name('assign.role');
+
+// Gérer les permissions pour chaque utilisateur
+Route::post('/manage-permissions/{user}', [DashboardController::class, 'managePermissions'])->name('manage.permissions');
+
+
 
 Route::get('/', function () {
     return view('index');
