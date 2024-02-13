@@ -5,28 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestion des rôles et des permissions</title>
+    <title>Gestion des rôles</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <style>
-        /* Custom Styles */
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        h1, h2 {
-            color: #343a40;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .list-group-item {
-            background-color: #f8f9fa;
-            border: none;
-        }
-    </style> --}}
 </head>
 <body>
 <div class="container">
