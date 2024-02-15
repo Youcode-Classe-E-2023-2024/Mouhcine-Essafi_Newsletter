@@ -3,7 +3,9 @@
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +17,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/manage-roles-permissions',  [DashboardController::class, 'getUsersRolesPermissions']);
+
+Route::get('/manage-media',  [MediaController::class, 'index'])->name('media');
+
 
 // // Assigner un rôle à un utilisateur
+Route::get('/manage-roles',  [DashboardController::class, 'getUsersRolesPermissions'])->name('manage-roles');
 Route::post('/assign-role', [DashboardController::class, 'assignRole'])->name('assign.role');
 
-// Gérer les permissions pour chaque utilisateur
-Route::post('/manage-permissions/{user}', [DashboardController::class, 'managePermissions'])->name('manage.permissions');
 
 
 
@@ -32,7 +35,7 @@ Route::get('/', function () {
 Route::post('subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
