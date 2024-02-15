@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $usersWithAdminRole = User::role($adminRoleId)->get();
         $usersWithRedirecteurRole = User::role($redirecteurRoleId)->get();
 
-        return view('manage_roles_permissions', compact('users', 'roles', 'permissions', 'usersWithMembreRole', 'usersWithAdminRole', 'usersWithRedirecteurRole'));
+        return view('admin.manage_roles_permissions', compact('users', 'roles', 'permissions', 'usersWithMembreRole', 'usersWithAdminRole', 'usersWithRedirecteurRole'));
     }
 
     // Méthode pour assigner un rôle à un utilisateur
