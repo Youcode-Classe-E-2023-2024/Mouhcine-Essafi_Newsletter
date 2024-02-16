@@ -7,6 +7,7 @@ use App\Http\Controllers\MediaController;
 use Illuminate\Support\Facades\Route;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +19,21 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 |
 */
 
-Route::get('/manage-media',  [MediaController::class, 'index'])->name('media');
 
 
 // // Assigner un rôle à un utilisateur
 Route::get('/manage-roles',  [DashboardController::class, 'getUsersRolesPermissions'])->name('manage-roles');
 Route::post('/assign-role', [DashboardController::class, 'assignRole'])->name('assign.role');
 
+// Route::middleware(['auth'])->name('media')->prefix('media')->group(function () {
+    Route::get('/media', [MediaController::class, 'media'])->name('media');
+    Route::post('/media', [MediaController::class, 'media'])->name('editor.media');
 
+// });
 
+Route::get('/add_template', function () {
+    return view('redacteur.form_template');
+})->name('add_template');
 
 Route::get('/', function () {
     return view('index');
