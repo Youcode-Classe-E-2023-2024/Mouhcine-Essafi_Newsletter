@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Medias;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Support\Facades\Auth;
 
 class MediaController extends Controller
@@ -19,15 +19,15 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store()
+    public function store(Request $request)
     {
-        $userId = Auth::id();
-        $media = Medias::create();
+        // $userId = Auth::id();
+        $media = Media::create();
 
         // Add the uploaded image to the media collection
         $media->addMediaFromRequest('image')->toMediaCollection();
         // Handle success scenario
-        return redirect('/table')->with('success', 'Image uploaded successfully.');
+        return redirect()->back()->with('success', 'Image uploaded successfully.');
     }
 
     /**
@@ -35,7 +35,7 @@ class MediaController extends Controller
      */
     public function show()
     {
-        $medias = Medias::all();
+        // $medias = Medias::all();
         return view('tableMedias', compact('medias'));
     }
 
@@ -44,7 +44,7 @@ class MediaController extends Controller
      */
     public function showCards()
     {
-        $medias = Medias::all();
+        // $medias = Medias::all();
         return view('mediaCards', compact('medias'));
     }
 
@@ -54,7 +54,7 @@ class MediaController extends Controller
     public function destroy($id)
     {
         // Find the media by its ID
-        $media = Medias::find($id);
+        $media = Media::find($id);
 
         if (!$media) {
             return redirect()->back()->with('error', 'Media not found.');
@@ -62,5 +62,20 @@ class MediaController extends Controller
         $media->delete();
 
         return redirect()->back()->with('success', 'Media deleted successfully.');
+    }
+    public function media(Request $request)
+    {
+        $user = auth()->user();
+    
+        // Handle the upload if the request has a file.
+        if ($request->hasFile('media')) {
+            $user->addMediaFromRequest('media')->toMediaCollection();
+            return redirect()->route('editor.media'); // Redirect to clear the POST request and show the updated media list.
+        }
+    
+        // Retrieve all media for the user to display on the page.
+        $mediaItems = $user->media;
+    
+        return view('redacteur.upload_medias', compact('mediaItems'));
     }
 }
