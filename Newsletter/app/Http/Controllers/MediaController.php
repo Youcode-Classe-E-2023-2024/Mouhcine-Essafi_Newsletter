@@ -31,24 +31,6 @@ class MediaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        // $medias = Medias::all();
-        return view('tableMedias', compact('medias'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function showCards()
-    {
-        // $medias = Medias::all();
-        return view('mediaCards', compact('medias'));
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)

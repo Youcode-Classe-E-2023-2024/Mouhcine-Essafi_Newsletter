@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MediaController;
+use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -31,15 +33,14 @@ Route::post('/assign-role', [DashboardController::class, 'assignRole'])->name('a
 
 // });
 
-Route::get('/add_template', function () {
-    return view('redacteur.form_template');
-})->name('add_template');
+Route::get('/add_template', [TemplateController::class, 'index'])->name('add_template');
+Route::post('/save_template', [TemplateController::class, 'store'])->name('save_template');
 
 Route::get('/', function () {
     return view('index');
 });
 
-Route::post('subscribe', [NewsletterController::class, 'subscribe'])->name('subscribe');
+Route::post('subscribe', [MemberController::class, 'subscribe'])->name('subscribe');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
